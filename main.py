@@ -20,30 +20,20 @@ class ActivityMonitorApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # Window settings
         self.setWindowTitle("Modern Activity Monitor")
         self.setGeometry(200, 200, 600, 550)
-
-        # Variables
         self.monitoring = False
         self.log_file_path = os.path.join(os.getcwd(), "activity_log.txt")
         self.api_key = None
         self.selected_model = None
         self.analysis_method = "OpenAI"  # Default method
-
-        # Layout and widgets
         self.init_ui()
-
-        # Thread for monitoring
         self.monitor_thread = None
 
     def init_ui(self):
         # Main layout
         layout = QVBoxLayout()
-        # بعد از تعریف layout
         developer_info_layout = QHBoxLayout()
-
-        # ایجاد QLabel برای نمایش اطلاعات توسعه‌دهنده
         developer_info_label = QLabel(self)
         developer_info_label.setText(
             '<a href="https://jahaniwww.com" style="color: white;">Developed By : Ali Jahani</a> | '
@@ -52,8 +42,6 @@ class ActivityMonitorApp(QMainWindow):
         )
         developer_info_label.setOpenExternalLinks(True)
         developer_info_label.setAlignment(Qt.AlignCenter)
-
-        # اضافه کردن به layout
         developer_info_layout.addWidget(developer_info_label)
         layout.addLayout(developer_info_layout)
 
@@ -67,8 +55,6 @@ class ActivityMonitorApp(QMainWindow):
         self.select_file_btn.clicked.connect(self.select_log_file)
         file_layout.addWidget(self.select_file_btn)
         layout.addLayout(file_layout)
-
-        # Method selection (OpenAI or Ollama)
         method_layout = QHBoxLayout()
         self.openai_radio = QRadioButton("OpenAI", self)
         self.ollama_radio = QRadioButton("Ollama", self)
@@ -83,8 +69,6 @@ class ActivityMonitorApp(QMainWindow):
         method_layout.addWidget(self.openai_radio)
         method_layout.addWidget(self.ollama_radio)
         layout.addLayout(method_layout)
-
-        # OpenAI API key and model input
         self.api_input = QLineEdit(self)
         self.api_input.setPlaceholderText("Enter OpenAI API Key")
         layout.addWidget(self.api_input)
@@ -92,30 +76,21 @@ class ActivityMonitorApp(QMainWindow):
         self.openai_model_input = QLineEdit(self)
         self.openai_model_input.setPlaceholderText("Enter OpenAI Model Name")
         layout.addWidget(self.openai_model_input)
-
-        # Ollama model input
         self.ollama_model_input = QLineEdit(self)
         self.ollama_model_input.setPlaceholderText("Enter Ollama Model Name")
         layout.addWidget(self.ollama_model_input)
-
-        # Start/Stop buttons
         self.start_btn = QPushButton("Start Monitoring", self)
         self.start_btn.setStyleSheet("background-color: green; color: white;")
         self.start_btn.clicked.connect(self.start_monitoring)
         layout.addWidget(self.start_btn)
-
         self.stop_btn = QPushButton("Stop Monitoring", self)
         self.stop_btn.setStyleSheet("background-color: red; color: white;")
         self.stop_btn.clicked.connect(self.stop_monitoring)
         self.stop_btn.setEnabled(False)
         layout.addWidget(self.stop_btn)
-
-        # Status label
         self.status_label = QLabel("Status: Stopped", self)
         self.status_label.setAlignment(Qt.AlignCenter)
         layout.addWidget(self.status_label)
-
-        # Analyze log file
         self.analyze_btn = QPushButton("Analyze Log File", self)
         self.analyze_btn.clicked.connect(self.analyze_log)
         layout.addWidget(self.analyze_btn)
@@ -123,13 +98,9 @@ class ActivityMonitorApp(QMainWindow):
         self.result_area = QTextEdit(self)
         self.result_area.setReadOnly(True)
         layout.addWidget(self.result_area)
-
-        # Set layout in a central widget
         central_widget = QWidget()
         central_widget.setLayout(layout)
         self.setCentralWidget(central_widget)
-
-        # Initial visibility
         self.update_analysis_method()
 
     def update_analysis_method(self):
@@ -146,7 +117,6 @@ class ActivityMonitorApp(QMainWindow):
             self.ollama_model_input.setVisible(True)
 
     def select_log_file(self):
-        # Open file dialog to select the log file
         options = QFileDialog.Options()
         file_path, _ = QFileDialog.getSaveFileName(
             self, "Select Log File", self.log_file_path, "Text Files (*.txt);;All Files (*)", options=options
@@ -231,7 +201,6 @@ class ActivityMonitorApp(QMainWindow):
             self.result_area.setText(f"Error: {e}")
 
     def analyze_with_ollama(self, log_data):
-        # Get the selected model from input
         self.selected_model = self.ollama_model_input.text()
 
         if not self.selected_model:
@@ -239,20 +208,12 @@ class ActivityMonitorApp(QMainWindow):
             return
 
         try:
-            # Create an instance of the ChatOllama model with the selected model
             model = ChatOllama(model=self.selected_model)
-
-            # Invoke the model with the log data (prompt)
             response = model.invoke(f"این لاگ فعالیت های منه ، بهم بگو که چه میزان زمان روی چه کارهایی صرف کردم و پیشنهاداتی برای بهره وری بیشتر بهم بگو به زبان فارسی:\n{log_data}")
-
-            # Get the analysis result as a string (instead of printing it in the terminal)
             analysis_result = response.content
-
-            # Display the result in the result_area widget
             self.result_area.setText(analysis_result)
 
         except Exception as e:
-            # If any error occurs, show it in the result_area widget
             self.result_area.setText(f"Error: {e}")
 
 
