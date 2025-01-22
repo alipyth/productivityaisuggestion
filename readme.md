@@ -34,7 +34,7 @@
 </p>
 
 <p align="center">
-<img src="Screenshot%202025-01-22%20172542.png" alt="Modern Activity Monitor Screenshot">
+<img src="demo.png" alt="Modern Activity Monitor Screenshot">
 </p>
 
 ---
