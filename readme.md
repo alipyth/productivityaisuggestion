@@ -44,7 +44,7 @@
 <p align="right">
 - سیستم‌عامل: ویندوز 10 یا بالاتر
 - پایتون: نسخه 3.9 یا جدیدتر
-- کتابخانه‌های موردنیاز: OpenAI، Ollama
+- کتابخانه‌های موردنیاز: OpenAI,ollama,langchain-community,requests,threading,pyqt5
 </p>
 
 ---
