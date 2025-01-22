@@ -83,4 +83,4 @@
 
 ---
 
-<p align="center">تهیه‌شده توسط علی جهانی | [وب‌سایت](https://jahanivww.com)</p>
+<p align="center">تهیه‌شده توسط علی جهانی | https://jahanivww.com</p>
