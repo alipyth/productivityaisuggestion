@@ -55,7 +55,7 @@
 1. مخزن پروژه را کلون کنید:</p>
 
 ```bash
-   git clone https://github.com/your-repo/modern-activity-monitor.git
+   (https://github.com/alipyth/productivityaisuggestion.git)
 ```
 
 <p align="right">
