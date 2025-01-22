@@ -55,7 +55,7 @@
 1. مخزن پروژه را کلون کنید:</p>
 
 ```bash
-   (https://github.com/alipyth/productivityaisuggestion.git)
+   https://github.com/alipyth/productivityaisuggestion.git
 ```
 
 <p align="right">
