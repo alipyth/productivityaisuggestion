@@ -62,20 +62,26 @@
 ## نصب و اجرا
 
 <p align="right">
-1. مخزن پروژه را کلون کنید:
-   ```bash
+1. مخزن پروژه را کلون کنید:</p>
+
+```bash
    git clone https://github.com/your-repo/modern-activity-monitor.git
-   ```
-2. به پوشه پروژه بروید و پیش‌نیازها را نصب کنید:
-   ```bash
+```
+
+<p align="right">
+2. به پوشه پروژه بروید و پیش‌نیازها را نصب کنید:</p>
+
+```bash
    cd modern-activity-monitor
    pip install -r requirements.txt
-   ```
-3. برنامه را اجرا کنید:
-   ```bash
+```
+
+<p align="right">
+3. برنامه را اجرا کنید:</p>
+
+```bash
    python app.py
-   ```
-</p>
+```
 
 ---
 
@@ -87,4 +93,4 @@
 
 ---
 
-<p align="center">تهیه‌شده توسط علی جهانی | [وب‌سایت](https://jahaniwww.com)</p>
+<p align="center">تهیه‌شده توسط علی جهانی | [وب‌سایت](https://jahanivww.com)</p>
